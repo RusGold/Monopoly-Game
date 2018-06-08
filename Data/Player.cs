@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,9 +44,9 @@ namespace WpfApplication1
             if (addMoney) { budget += 200; }
             position = newPosition;
         }
-
         public void Move(int Steps)
         {
+
             position += Steps;
             if (position >= 40)
             {
@@ -54,8 +54,8 @@ namespace WpfApplication1
                 budget += 200;
             }
             var ii = (Ellipse) MainWindow.cdata.wnd.Board.FindName("pl" + Convert.ToString(this.playerid));
-            ii.SetValue(Grid.RowProperty,  MainWindow.cdata.cells[position].x);
-            ii.SetValue(Grid.ColumnProperty, MainWindow.cdata.cells[position].y);
+            ii.SetValue(Grid.RowProperty,  MainWindow.cdata.cells[position].y);
+            ii.SetValue(Grid.ColumnProperty, MainWindow.cdata.cells[position].x);
         }
         public void Update()
         {
@@ -70,3 +70,4 @@ namespace WpfApplication1
 
     }
 }
+
