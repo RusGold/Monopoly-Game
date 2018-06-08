@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfApplication1.MainWindow"
+<Window x:Class="WpfApplication1.MainWindow"
         
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -25,15 +25,17 @@
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="64"/>
-                <RowDefinition Height="64"/>
+                <RowDefinition Height="348"/>
             </Grid.RowDefinitions>
 
-            <Rectangle Fill="White" Grid.Column="0" Grid.Row="0" Height="160" Width="160"/>
+            <Rectangle Name="cPlayer" Fill="Black" Grid.Column="0" Grid.Row="0" Height="160" Width="356"/>
             <Image Name="portrait" Grid.Column="0" Grid.Row="0" Source="Resources/Actor_Male_Dark.png" Height="160"/>
             <Button Grid.Row="1" Content="Кинуть кубик" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26" Click="Button_Click"/>
             <Button Grid.Row="2" Content="Заплатить" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
             <Button Grid.Row="3" Content="Договор" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
             <Button Grid.Row="4" Content="Залог/Продажа" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
+            <Image  Grid.Row="5" Grid.Column="0" Name="Anigif_dices" Visibility="Hidden" gif:ImageBehavior.AnimatedSource="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif"  Source="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif" MouseDown="Anigif_dices_MouseDown" Width="240" Height="240"/>
+
         </Grid  >
         <Grid Grid.Column="0" HorizontalAlignment="Left" Name="Board" >
             <Grid.ColumnDefinitions>
@@ -84,7 +86,6 @@
                 </Grid.ColumnDefinitions>
                 <Image Name="chance"  Source="Resources/rd.png" Width="256" Height="128" Grid.Column="1" Grid.Row="1" VerticalAlignment="center" HorizontalAlignment="center"/>
                 <Image Name="och"  Source="Resources/od.png" Width="256" Height="128" Grid.Column="3" Grid.Row="3" VerticalAlignment="center" HorizontalAlignment="center"/>
-                <Image Name="Anigif_dices" Visibility="Hidden" gif:ImageBehavior.AnimatedSource="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif" Grid.Row="2" Grid.Column="2" Source="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif" MouseDown="Anigif_dices_MouseDown"/>
             </Grid>
             <!--ГОРИЗОНТАЛЬ ВЕРХ-->
             <!--ГОРИЗОНТАЛЬ ВЕРХ-->
@@ -98,55 +99,127 @@
 
             <Rectangle Name="p011" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p014" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p012" Grid.Column="1" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p013" Grid.Column="1" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p012" Grid.Column="1" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top" >
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                    <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Танзания – это страна в Восточной Африке, славящаяся обширными районами девственной природы. Национальный парк Серенгети очень популярен среди любителей сафари, предпочитающих охотиться на крупных животных. Столица: Додома" />
+                        </StackPanel>
+                </ToolTip>
+                </Image.ToolTip> 
+             </Image>
+            <Image Name="p013" Grid.Column="1" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 2 клетка 0 ряд -->
 
             <Rectangle Name="p021" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p024" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p022" Grid.Column="2" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p023" Grid.Column="2" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p023" Grid.Column="2" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 3 клетка 0 ряд -->
 
             <Rectangle Name="p031" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p034" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p032" Grid.Column="3" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p033" Grid.Column="3" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p032" Grid.Column="3" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Замбия – не имеющая выхода к морю страна в Южной Африке известная своими многочисленными парками и районами сафари, где обитают разнообразные дикие животные. Столица: Лусака." />
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p033" Grid.Column="3" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 4 клетка 0 ряд -->
 
             <Rectangle Name="p041" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p044" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p042" Grid.Column="4" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p043" Grid.Column="4" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p043" Grid.Column="4" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 5 клетка 0 ряд -->
 
             <Rectangle Name="p051" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="5" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p054" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="5" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p052" Grid.Column="5" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p052" Grid.Column="5" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Организация стран — экспортёров нефти — международная межправительственная организация, созданная нефтедобывающими странами в целях контроля квот добычи на нефть." />
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
             <!-- 6 клетка 0 ряд -->
 
             <Rectangle Name="p061" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p064" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p062" Grid.Column="6" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p063" Grid.Column="6" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p062" Grid.Column="6" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Вьетнам – это страна в Юго-Восточной Азии. Она известна своими пляжами, буддистскими пагодами и оживленными городами. В столице, городе Ханой, находится огромный мавзолей лидера коммунистической партии Хо Ши Мина. " />
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p063" Grid.Column="6" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 7 клетка 0 ряд -->
 
             <Rectangle Name="p071" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p074" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p072" Grid.Column="7" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p073" Grid.Column="7" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p073" Grid.Column="7" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 8 клетка 0 ряд -->
 
             <Rectangle Name="p081" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p084" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p082" Grid.Column="8" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p083" Grid.Column="8" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p082" Grid.Column="8" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Армения – это государство на Кавказе, расположенное на границе Европы и Азии; бывшая союзная республика СССР. Столица: Ереван." />
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p083" Grid.Column="8" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 0 ряд -->
 
             <Rectangle Name="p091" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p094" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p092" Grid.Column="9" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p093" Grid.Column="9" Grid.Row="0" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p092" Grid.Column="9" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Албания – это небольшое государство в юго-восточной части Европы, расположенное на Балканском полуострове. В ее столице, Тиране, особого внимания заслуживают большая площадь Скандербега, мечеть Эфем-Бей, а также Национальный музей."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p093" Grid.Column="9" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
 
 
             <!-- 10 клетка 0 ряд -->
@@ -163,52 +236,148 @@
             <!-- 9 клетка 1 ряд -->
             <Rectangle Name="p1101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="1" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="1" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1102" Grid.Column="10" Grid.Row="1" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1103" Grid.Column="10" Grid.Row="1" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1102" Grid.Column="10" Grid.Row="1" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Литва – самая южная из стран Балтии и бывшая республика СССР, граничащая с Польшей, Латвией и Беларусью. Вильнюс, столица государства, находится недалеко от Беларуси и известен своим Старым городом со зданиями в готическом стиле."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1103" Grid.Column="10" Grid.Row="1" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 2 ряд -->
 
             <Rectangle Name="p2101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="2" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p2104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="2" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p2102" Grid.Column="10" Grid.Row="2" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p2103" Grid.Column="10" Grid.Row="2" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p2102" Grid.Column="10" Grid.Row="2" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Национальное управление по аэронавтике и исследованию космического пространства — ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно вице-президенту США."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p2103" Grid.Column="10" Grid.Row="2" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 3 ряд -->
             <Rectangle Name="p3101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="3" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p3104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="3" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p3102" Grid.Column="10" Grid.Row="3" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p3103" Grid.Column="10" Grid.Row="3" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p3102" Grid.Column="10" Grid.Row="3" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Грузия – страна на западе Закавказья на границе Европы и Азии. Столица страны Тбилиси известна своей богатой архитектурой и Старым городом с напоминающими лабиринт улочками, мощенными брусчаткой."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p3103" Grid.Column="10" Grid.Row="3" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 4 ряд -->
             <Rectangle Name="p4101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="4" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p4104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="4" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p4102" Grid.Column="10" Grid.Row="4" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p4103" Grid.Column="10" Grid.Row="4" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p4102" Grid.Column="10" Grid.Row="4" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Эстония – государство в Северной Европе и бывшая республика СССР. Оно омывается водами Балтийского моря и Финского залива. Столица страны Таллин пользуется популярностью у туристов благодаря хорошо сохранившемуся Старому городу."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p4103" Grid.Column="10" Grid.Row="4" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 5 ряд -->
             <Rectangle Name="p5101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="5" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p5104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="5" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p5102" Grid.Column="10" Grid.Row="5" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p5103" Grid.Column="10" Grid.Row="5" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p5102" Grid.Column="10" Grid.Row="5" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Международный олимпиийский комитеет — международная организация, созданная для возрождения Олимпийских игр и пропаганды олимпийского движения. Штаб-квартира комитета находится в Лозанне."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p5103" Grid.Column="10" Grid.Row="5" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 6 ряд -->
             <Rectangle Name="p6101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="6" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p6104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="6" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p6102" Grid.Column="10" Grid.Row="6" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p6103" Grid.Column="10" Grid.Row="6" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p6102" Grid.Column="10" Grid.Row="6" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Норвегия – скандинавское страна, на территории которой расположены горы, ледники и глубокие прибрежные фьорды. Столица страны - город Осло."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p6103" Grid.Column="10" Grid.Row="6" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 7 ряд -->
             <Rectangle Name="p7101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="7" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p7104" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="7" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p7102" Grid.Column="10" Grid.Row="7" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p7103" Grid.Column="10" Grid.Row="7" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p7103" Grid.Column="10" Grid.Row="7" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 8 ряд -->
             <Rectangle Name="p8101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="8" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p8104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="8" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p8102" Grid.Column="10" Grid.Row="8" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p8103" Grid.Column="10" Grid.Row="8" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p8102" Grid.Column="10" Grid.Row="8" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Дания – скандинавское государство, расположенное на полуострове Ютландия и многочисленных близлежащих островах. Копенгаген, столица Дании, славится своими королевскими дворцами."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p8103" Grid.Column="10" Grid.Row="8" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
 
 
 
             <!-- 9 клетка 9 ряд -->
             <Rectangle Name="p9101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="9" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p9104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="9" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p9102" Grid.Column="10" Grid.Row="9" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p9103" Grid.Column="10" Grid.Row="9" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p9102" Grid.Column="10" Grid.Row="9" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Финляндия – страна в Северной Европе, граничащая со Швецией, Норвегией и Россией. Столица страны Хельсинки расположена на полуострове и прилегающих к нему островах Балтийского моря."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p9103" Grid.Column="10" Grid.Row="9" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
 
 
             <!--ГОРИЗОНТАЛЬ НИЗ-->
@@ -223,56 +392,153 @@
 
             <Rectangle Name="p1011" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1014" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1012" Grid.Column="1" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1013" Grid.Column="1" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1012" Grid.Column="1" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Латвия – страна на побережье Балтийского моря, которая славится своими широкими пляжами и огромными густыми лесами. Столица страны Рига привлекает туристов благодаря деревянным зданиям и огромному Центральному рынку."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1013" Grid.Column="1" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 2 клетка 0 ряд -->
 
             <Rectangle Name="p1021" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1024" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1022" Grid.Column="2" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1023" Grid.Column="2" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1022" Grid.Column="2" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="«Роскосмос» — российская корпорация, управляющая космической отраслью страны. Офис «Роскосмоса» располагается в Москве. Центр управления полётами находится в городе Королёве. Центр подготовки космонавтов располагается в подмосковном Звёздном городке."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1023" Grid.Column="2" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 3 клетка 0 ряд -->
 
             <Rectangle Name="p1031" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1034" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1032" Grid.Column="3" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1033" Grid.Column="3" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1032" Grid.Column="3" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Польша – страна в Восточной Европе на берегу Балтийского моря, известная своей средневековой архитектурой и еврейскими кварталами. Столица: Варшава."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1033" Grid.Column="3" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 4 клетка 0 ряд -->
 
             <Rectangle Name="p1041" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1044" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1042" Grid.Column="4" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1043" Grid.Column="4" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1042" Grid.Column="4" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Португалия – южное европейское, граничащее с Испанией. Национальными блюдами считаются соленая треска и сардины на гриле. Самое популярное место среди туристов – пляжи региона Альгарве. Столица: Лиссабон."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1043" Grid.Column="4" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 5 клетка 0 ряд -->
 
             <Rectangle Name="p1051" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="5" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1054" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="5" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1052" Grid.Column="5" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1053" Grid.Column="5" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1052" Grid.Column="5" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Всемирный фонд дикой природы — международная общественная организация, работающая в сферах, касающихся сохранения, исследования и восстановления окружающей среды."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1053" Grid.Column="5" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 6 клетка 0 ряд -->
 
             <Rectangle Name="p1061" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1064" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1062" Grid.Column="6" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1063" Grid.Column="6" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1062" Grid.Column="6" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Таиланд – государство в Юго-Восточной Азии с многочисленными тропическими пляжами. В Бангкоке, столице страны, по соседству с ультрасовременными небоскребами расположились тихие жилые районы."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1063" Grid.Column="6" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 7 клетка 0 ряд -->
 
             <Rectangle Name="p1071" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1074" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1072" Grid.Column="7" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1073" Grid.Column="7" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1072" Grid.Column="7" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Тунис – страна в Северной Африке, естественными границами которой являются Средиземное море и пустыня Сахара. В Тунисе, одноименной столице страны, стоит посетить археологический музей Бардо."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+
+            <Image Name="p1073" Grid.Column="7" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 8 клетка 0 ряд -->
 
             <Rectangle Name="p1081" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1084" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p1082" Grid.Column="8" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1083" Grid.Column="8" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1083" Grid.Column="8" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 10 клетка 0 ряд -->
 
             <Rectangle x:Name="p1091" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1094" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1092" Grid.Column="9" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p1093" Grid.Column="9" Grid.Row="10" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p1092" Grid.Column="9" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Мексика – государство, расположенное между США и странами Центральной Америки. Столица Мексики, Мехико, является современным городом, где есть престижные магазины, знаменитые музеи и изысканные рестораны."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p1093" Grid.Column="9" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
 
 
             <!-- 10 клетка 0 ряд -->
@@ -288,49 +554,121 @@
             <!-- 9 клетка 1 ряд -->
             <Rectangle Name="p101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p102" Grid.Column="0" Grid.Row="1" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p103" Grid.Column="0" Grid.Row="1" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p102" Grid.Column="0" Grid.Row="1" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Объединенные Арабские Эмираты – государство на Аравийском полуострове вдоль южного побережья Персидского залива, состоящее из семи эмиратов. Столица страны Абу-Даби, расположенная на прибрежном острове, славится Большой мечетью шейха Зайда."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p103" Grid.Column="0" Grid.Row="1" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 2 ряд -->
 
             <Rectangle Name="p201" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p204" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p202" Grid.Column="0" Grid.Row="2" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p203" Grid.Column="0" Grid.Row="2" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p203" Grid.Column="0" Grid.Row="2" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 3 ряд -->
             <Rectangle Name="p301" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p304" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p302" Grid.Column="0" Grid.Row="3" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p303" Grid.Column="0" Grid.Row="3" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p302" Grid.Column="0" Grid.Row="3" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Великобритания - островное государство на северо-западе Европы, состоящее из Англии, Шотландии, Уэльса и Северной Ирландии. В Англии, на родине Шекспира и группы The Beatles, находится столица государства Лондон – мировой деловой и культурный центр."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p303" Grid.Column="0" Grid.Row="3" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 4 ряд -->
             <Rectangle Name="p401" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="4" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p404" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="4" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p402" Grid.Column="0" Grid.Row="4" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p403" Grid.Column="0" Grid.Row="4" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p403" Grid.Column="0" Grid.Row="4" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 5 ряд -->
             <Rectangle Name="p501" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="5" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p504" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="5" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p502" Grid.Column="0" Grid.Row="5" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p503" Grid.Column="0" Grid.Row="5" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p502" Grid.Column="0" Grid.Row="5" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Всемирная организаация здравоохранеения — специальное учреждение Организации Объединённых Наций, состоящее из 194 государств-членов, основная функция которого лежит в решении международных проблем здравоохранения населения Земли."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p503" Grid.Column="0" Grid.Row="5" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 6 ряд -->
             <Rectangle Name="p601" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="6" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p604" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="6" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p602" Grid.Column="0" Grid.Row="6" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p603" Grid.Column="0" Grid.Row="6" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p602" Grid.Column="0" Grid.Row="6" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Франция – это страна в Западной Европе, на территории которой находятся средневековые города и пляжи Средиземного моря. Париж, столица государства, славится своими старейшими художественными музеями, в числе которых Лувр."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p603" Grid.Column="0" Grid.Row="6" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 7 ряд -->
             <Rectangle Name="p701" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="7" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p704" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="7" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
             <Image Name="p702" Grid.Column="0" Grid.Row="7" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p703" Grid.Column="0" Grid.Row="7" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p703" Grid.Column="0" Grid.Row="7" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 8 ряд -->
             <Rectangle Name="p801" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="8" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p804" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="8" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p802" Grid.Column="0" Grid.Row="8" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p803" Grid.Column="0" Grid.Row="8" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p802" Grid.Column="0" Grid.Row="8" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Италия – средиземноморское государство в Южной Европе с длинной береговой линией. На территории столицы страны, Рима, находится государство Ватикан, а также всемирно известные музеи и древние руины."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p803" Grid.Column="0" Grid.Row="8" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 8 ряд -->
             <Rectangle Name="p901" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="9" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p904" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="9" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p902" Grid.Column="0" Grid.Row="9" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
-            <Image Name="p903" Grid.Column="0" Grid.Row="9" Source="Resources/home.png" Width="16" Height="16" Margin="24,46,24,2" />
+            <Image Name="p902" Grid.Column="0" Grid.Row="9" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+                <Image.ToolTip>
+                    <ToolTip Background="#90004455">
+                        <StackPanel>
+                            <TextBlock Margin="3"
+                                       Width="300"
+                                       Foreground="White"
+                                       TextWrapping="WrapWithOverflow"
+                                       Text="Россия – крупнейшая страна мира, расположенная в Восточной Европе и Северной Азии и омываемая водами Тихого и Северного Ледовитого океанов. Столица — Москва."/>
+                        </StackPanel>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+            <Image Name="p903" Grid.Column="0" Grid.Row="9" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
 <!-- Player icons -->
             <Ellipse Name="pl0"  Fill="#ffff00" Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,28,0,0" HorizontalAlignment="center"/>
             <Ellipse Name="pl1"  Fill="#00ee00"  Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,28,0,0" HorizontalAlignment="center"/>
@@ -344,4 +682,3 @@
         </Grid>
 
     </Grid>
-</Window>
