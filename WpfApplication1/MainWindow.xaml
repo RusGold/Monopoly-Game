@@ -8,9 +8,13 @@
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         
-        Title="Monopoly" Height="764" Width="1096" Icon="Resources/monopolylogo.png">
-    
+        Title="Monopoly" Height="764" Width="1096" Icon="Resources/monopolylogo.png" FontFamily="/WpfApplication1;component/Resources/#Segoe Print">
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="310*"/>
+        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="706"/>
@@ -18,7 +22,7 @@
 
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1"  >
+        <Grid Grid.Column="1" Grid.RowSpan="2"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="160"/>
                 <RowDefinition Height="64"/>
@@ -29,15 +33,24 @@
             </Grid.RowDefinitions>
 
             <Rectangle Name="cPlayer" Fill="Black" Grid.Column="0" Grid.Row="0" Height="160" Width="356"/>
-            <Image Name="portrait" Grid.Column="0" Grid.Row="0" Source="Resources/Actor_Male_Dark.png" Height="160"/>
-            <Button Grid.Row="1" Content="Кинуть кубик" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26" Click="Button_Click"/>
-            <Button Grid.Row="2" Content="Заплатить" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
+            <Image Name="portrait" Grid.Column="0" Grid.Row="0" Source="Resources/1px.gif" Height="160" Width="160" Margin="25,1" HorizontalAlignment="Left"/>
+            <TextBox x:Name="PInfo" Height="160" Width="194" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Player1" VerticalAlignment="Top" IsEnabled="False" FontSize="18" FontFamily="/WpfApplication1;component/Resources/#Segoe Print" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" >
+                <TextBox.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF643838" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.Foreground>
+            </TextBox>
+            <Button Name="Move" Grid.Row="1" Content="Кинуть кубик" IsDefault="True" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26" Click="Button_Click"/>
+            <Button Name="Build" Grid.Row="2" Content="Построить" IsEnabled="False" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
             <Button Grid.Row="3" Content="Договор" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
-            <Button Grid.Row="4" Content="Залог/Продажа" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
-            <Image  Grid.Row="5" Grid.Column="0" Name="Anigif_dices" Visibility="Hidden" gif:ImageBehavior.AnimatedSource="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif"  Source="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif" MouseDown="Anigif_dices_MouseDown" Width="240" Height="240"/>
-
-        </Grid  >
-        <Grid Grid.Column="0" HorizontalAlignment="Left" Name="Board" >
+            <Button Grid.Row="4" Content="Продажа" HorizontalAlignment="Center" Margin="10,1" VerticalAlignment="Top" Width="356" Height="65" FontSize="26"/>
+            <Image Grid.Row="5" Grid.Column="0" Name="Anigif_dices" Visibility="Hidden" gif:ImageBehavior.AnimatedSource="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif"  Source="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif" MouseDown="Anigif_dices_MouseDown" Width="240" Height="240"/>
+            <Image Grid.Row="5" Grid.Column="0" Name="r1" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" Height="64" Source="Resources/4.gif" Margin="96,32,0,0"/>
+            <Image Grid.Row="5" Grid.Column="0" Name="r2" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Center" Width="64" Height="64" Source="Resources/2.gif" Margin="-96,32,0,0"/>
+        </Grid>
+        <Grid Grid.Column="0" HorizontalAlignment="Left" Name="Board" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
 
                 <ColumnDefinition Width="64"/>
@@ -68,7 +81,7 @@
                 <RowDefinition Height="64"/>
             </Grid.RowDefinitions>
             <Rectangle Name="MAPP" Fill="#eeffdd" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="576" Margin="0,00"  Width="576" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="9"/>
-            
+
             <Grid Name ="chanceandother" Grid.ColumnSpan="9" Grid.RowSpan="9" Grid.Column="1" Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="32"/>
@@ -99,35 +112,35 @@
 
             <Rectangle Name="p011" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p014" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p012" Grid.Column="1" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top" >
+            <Image Name="p012" Grid.Column="1" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top" >
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
-                    <StackPanel>
-                            <TextBlock Margin="3"
+                        <StackPanel>
+                            <TextBlock Name="p012t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
                                        Text="Танзания – это страна в Восточной Африке, славящаяся обширными районами девственной природы. Национальный парк Серенгети очень популярен среди любителей сафари, предпочитающих охотиться на крупных животных. Столица: Додома" />
                         </StackPanel>
-                </ToolTip>
-                </Image.ToolTip> 
-             </Image>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
             <Image Name="p013" Grid.Column="1" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 2 клетка 0 ряд -->
 
             <Rectangle Name="p021" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p024" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p022" Grid.Column="2" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p022" Grid.Column="2" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p023" Grid.Column="2" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 3 клетка 0 ряд -->
 
             <Rectangle Name="p031" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p034" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p032" Grid.Column="3" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p032" Grid.Column="3" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p032t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -141,7 +154,7 @@
 
             <Rectangle Name="p041" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p044" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p042" Grid.Column="4" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p042" Grid.Column="4" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p043" Grid.Column="4" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 5 клетка 0 ряд -->
 
@@ -151,7 +164,7 @@
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p052t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -164,11 +177,11 @@
 
             <Rectangle Name="p061" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p064" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p062" Grid.Column="6" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p062" Grid.Column="6" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p062t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -182,17 +195,17 @@
 
             <Rectangle Name="p071" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p074" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p072" Grid.Column="7" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p072" Grid.Column="7" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p073" Grid.Column="7" Grid.Row="0" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 8 клетка 0 ряд -->
 
             <Rectangle Name="p081" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p084" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p082" Grid.Column="8" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p082" Grid.Column="8" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p082t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -206,11 +219,11 @@
 
             <Rectangle Name="p091" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="0" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p094" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="0" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p092" Grid.Column="9" Grid.Row="0" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p092" Grid.Column="9" Grid.Row="0" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p092t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -236,11 +249,11 @@
             <!-- 9 клетка 1 ряд -->
             <Rectangle Name="p1101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="1" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="1" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1102" Grid.Column="10" Grid.Row="1" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1102" Grid.Column="10" Grid.Row="1" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -254,11 +267,11 @@
 
             <Rectangle Name="p2101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="2" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p2104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="2" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p2102" Grid.Column="10" Grid.Row="2" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p2102" Grid.Column="10" Grid.Row="2" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p2102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -271,11 +284,11 @@
             <!-- 9 клетка 3 ряд -->
             <Rectangle Name="p3101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="3" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p3104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="3" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p3102" Grid.Column="10" Grid.Row="3" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p3102" Grid.Column="10" Grid.Row="3" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p3102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -288,11 +301,11 @@
             <!-- 9 клетка 4 ряд -->
             <Rectangle Name="p4101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="4" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p4104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="4" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p4102" Grid.Column="10" Grid.Row="4" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p4102" Grid.Column="10" Grid.Row="4" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p4102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -305,11 +318,11 @@
             <!-- 9 клетка 5 ряд -->
             <Rectangle Name="p5101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="5" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p5104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="5" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p5102" Grid.Column="10" Grid.Row="5" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p5102" Grid.Column="10" Grid.Row="5" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p5102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -322,11 +335,11 @@
             <!-- 9 клетка 6 ряд -->
             <Rectangle Name="p6101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="6" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p6104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="6" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p6102" Grid.Column="10" Grid.Row="6" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p6102" Grid.Column="10" Grid.Row="6" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p6102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -339,16 +352,16 @@
             <!-- 9 клетка 7 ряд -->
             <Rectangle Name="p7101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="7" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p7104" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="7" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p7102" Grid.Column="10" Grid.Row="7" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p7102" Grid.Column="10" Grid.Row="7" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p7103" Grid.Column="10" Grid.Row="7" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 8 ряд -->
             <Rectangle Name="p8101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="8" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p8104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="8" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p8102" Grid.Column="10" Grid.Row="8" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p8102" Grid.Column="10" Grid.Row="8" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p8102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -364,11 +377,11 @@
             <!-- 9 клетка 9 ряд -->
             <Rectangle Name="p9101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="9" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p9104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="10" Grid.Row="9" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p9102" Grid.Column="10" Grid.Row="9" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p9102" Grid.Column="10" Grid.Row="9" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p9102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -392,11 +405,11 @@
 
             <Rectangle Name="p1011" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1014" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1012" Grid.Column="1" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1012" Grid.Column="1" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1012t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -410,11 +423,11 @@
 
             <Rectangle Name="p1021" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1024" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1022" Grid.Column="2" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1022" Grid.Column="2" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1022t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -428,11 +441,11 @@
 
             <Rectangle Name="p1031" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1034" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1032" Grid.Column="3" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1032" Grid.Column="3" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1032t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -446,11 +459,11 @@
 
             <Rectangle Name="p1041" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1044" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1042" Grid.Column="4" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1042" Grid.Column="4" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1042t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -464,11 +477,11 @@
 
             <Rectangle Name="p1051" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="5" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1054" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="5" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1052" Grid.Column="5" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1052" Grid.Column="5" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1052t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -482,11 +495,11 @@
 
             <Rectangle Name="p1061" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1064" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="6" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1062" Grid.Column="6" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1062" Grid.Column="6" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1062t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -500,11 +513,11 @@
 
             <Rectangle Name="p1071" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1074" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="7" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1072" Grid.Column="7" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1072" Grid.Column="7" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1072t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -519,17 +532,17 @@
 
             <Rectangle Name="p1081" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1084" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="8" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1082" Grid.Column="8" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p1082" Grid.Column="8" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p1083" Grid.Column="8" Grid.Row="10" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 10 клетка 0 ряд -->
 
             <Rectangle x:Name="p1091" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="10" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p1094" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="9" Grid.Row="10" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p1092" Grid.Column="9" Grid.Row="10" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p1092" Grid.Column="9" Grid.Row="10" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p1092t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -554,11 +567,11 @@
             <!-- 9 клетка 1 ряд -->
             <Rectangle Name="p101" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p104" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p102" Grid.Column="0" Grid.Row="1" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p102" Grid.Column="0" Grid.Row="1" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p102t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -572,16 +585,16 @@
 
             <Rectangle Name="p201" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p204" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p202" Grid.Column="0" Grid.Row="2" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p202" Grid.Column="0" Grid.Row="2" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p203" Grid.Column="0" Grid.Row="2" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 3 ряд -->
             <Rectangle Name="p301" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p304" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p302" Grid.Column="0" Grid.Row="3" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p302" Grid.Column="0" Grid.Row="3" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p302t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -594,16 +607,16 @@
             <!-- 9 клетка 4 ряд -->
             <Rectangle Name="p401" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="4" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p404" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="4" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p402" Grid.Column="0" Grid.Row="4" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p402" Grid.Column="0" Grid.Row="4" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p403" Grid.Column="0" Grid.Row="4" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 5 ряд -->
             <Rectangle Name="p501" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="5" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p504" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="5" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p502" Grid.Column="0" Grid.Row="5" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p502" Grid.Column="0" Grid.Row="5" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p502t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -616,11 +629,11 @@
             <!-- 9 клетка 6 ряд -->
             <Rectangle Name="p601" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="6" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p604" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="6" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p602" Grid.Column="0" Grid.Row="6" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p602" Grid.Column="0" Grid.Row="6" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p602t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -633,16 +646,16 @@
             <!-- 9 клетка 7 ряд -->
             <Rectangle Name="p701" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="7" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p704" Fill="#CDE7CE" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="7" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p702" Grid.Column="0" Grid.Row="7" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top"/>
+            <Image Name="p702" Grid.Column="0" Grid.Row="7" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top"/>
             <Image Name="p703" Grid.Column="0" Grid.Row="7" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
             <!-- 9 клетка 8 ряд -->
             <Rectangle Name="p801" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="8" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p804" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="8" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p802" Grid.Column="0" Grid.Row="8" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p802" Grid.Column="0" Grid.Row="8" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
+                            <TextBlock Name="p802t" Margin="3"
                                        Width="300"
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
@@ -655,12 +668,12 @@
             <!-- 9 клетка 8 ряд -->
             <Rectangle Name="p901" Fill="#ffffff" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="9" Height="64" Margin="0,00" VerticalAlignment="Top" Width="64"/>
             <Rectangle Name="p904" Fill="#FFFFFF" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="9" Height="60" Margin="2,2" VerticalAlignment="Top" Width="62"/>
-            <Image Name="p902" Grid.Column="0" Grid.Row="9" Source="Resources/1px.gif" Width="60" Margin="0,2" VerticalAlignment="Top">
+            <Image Name="p902" Grid.Column="0" Grid.Row="9" Source="Resources/1px.gif" Width="60" Height="48" Margin="0,2" VerticalAlignment="Top">
                 <Image.ToolTip>
                     <ToolTip Background="#90004455">
                         <StackPanel>
-                            <TextBlock Margin="3"
-                                       Width="300"
+                            <TextBlock Name="p902t" Margin="3"
+                                       Width="300" 
                                        Foreground="White"
                                        TextWrapping="WrapWithOverflow"
                                        Text="Россия – крупнейшая страна мира, расположенная в Восточной Европе и Северной Азии и омываемая водами Тихого и Северного Ледовитого океанов. Столица — Москва."/>
@@ -669,11 +682,17 @@
                 </Image.ToolTip>
             </Image>
             <Image Name="p903" Grid.Column="0" Grid.Row="9" Source="Resources/1px.gif" Width="16" Height="16" Margin="24,46,24,2" />
-<!-- Player icons -->
-            <Ellipse Name="pl0"  Fill="#ffff00" Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,28,0,0" HorizontalAlignment="center"/>
-            <Ellipse Name="pl1"  Fill="#00ee00"  Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,28,0,0" HorizontalAlignment="center"/>
-            <Ellipse Name="pl2"  Fill="#cc00cc"  Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,-28,0,0" HorizontalAlignment="center"/>
-            <Ellipse Name="pl3"  Fill="#0000EE" Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,-28,0,0" HorizontalAlignment="center"/>
+            <!-- Player icons -->
+
+            <!-- Player icons -->
+            <Ellipse Visibility="Hidden" Name="pl00" Fill="#000000" Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl01" Fill="#ffff00" Width="26" Height="26" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl10"  Fill="#000000"  Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl11"  Fill="#00ee00"  Width="26" Height="26" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl20"  Fill="#000000"  Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,-28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl21"  Fill="#cc00cc"  Width="26" Height="26" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="-28,-28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl30"  Fill="#000000" Width="28" Height="28" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,-28,0,0" HorizontalAlignment="center"/>
+            <Ellipse Visibility="Hidden" Name="pl31"  Fill="#0000EE" Width="26" Height="26" Grid.Column="0" Grid.Row="0" VerticalAlignment="center" Margin="28,-28,0,0" HorizontalAlignment="center"/>
 
 
 
@@ -682,3 +701,4 @@
         </Grid>
 
     </Grid>
+</Window>
