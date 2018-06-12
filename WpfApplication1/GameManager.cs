@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,26 +25,6 @@ namespace WpfApplication1
 
         public void gamemngr()
         {
-            while (true)
-            {
-                getparametrs();
-
-                while (checkplayers())
-                {
-                    foreach (Player p in MainWindow.cdata.players)
-                    {
-                        if (p.isalive)
-                        {
-                            p.mover();
-                            
-                        }
-                        else
-                        {
-                            //nothingtodo();
-                        }
-                    }
-                }
-            }
         }
         public void getparametrs()
         {
