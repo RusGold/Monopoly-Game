@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfApplication1.Build"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="Build" Height="576" Width="576" FontFamily="Segoe Print" Activated="Bld_init" Loaded="Window_Loaded" ContentRendered="Window_ContentRendered">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="0" Grid.Row="0" Name="cPlayer" Fill="Yellow" HorizontalAlignment="Center" Height="64" Margin="0,0,0,0" VerticalAlignment="Top" Width="192"/>
+        <Image  Grid.Column="0" Grid.Row="0" x:Name="Portrait" HorizontalAlignment="Center" Height="64" Margin="0,0,0,0" VerticalAlignment="Top" Width="64" Source="Resources/Actor_Female_Light.png"/>
+        <DataGrid x:Name="bProperty" AutoGenerateColumns="False" ItemsSource="{Binding props}"  Grid.Column="0" Grid.Row="1" RowHeight="48" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Height="462" Width="453" SelectionChanged="newSelection" MouseDown="newSelection">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="2*" Header="Country" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="48" Width="64" Source="{Binding flag.Source}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="2*" Header="Color" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Rectangle Height="48" Width="128" Fill="{Binding street.Fill}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="3*" Header="Buildings">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="48" Width="192" Source="{Binding bld.Source}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button ToolTip="Add a new house" IsEnabled="False" x:Name="AddHouse" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="64" Height="64" Click="Add_house">
+            <Image Source="Resources/home.png"/>
+        </Button>
+        <Label x:Name="Cost" FontSize="19" Content="$100" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Margin="15,278,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64"/>
+
+    </Grid>
+</Window>
