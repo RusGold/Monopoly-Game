@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7D34134-EF71-4027-8118-0D670D8DA034}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WpfApplication1</RootNamespace>
+    <AssemblyName>WpfApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>monopoly.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.16\lib\net\WpfAnimatedGif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Auction.xaml.cs">
+      <DependentUpon>Auction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CardStack.cs" />
+    <Compile Include="Data\CommonData.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="starter.xaml.cs">
+      <DependentUpon>starter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Auction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Card.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="MAP.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="starter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\COMIC.TTF" />
+    <Resource Include="Resources\COMICBD.TTF" />
+    <Resource Include="Resources\GARA.TTF" />
+    <Resource Include="Resources\GARABD.TTF" />
+    <Resource Include="Resources\GARAIT.TTF" />
+    <Resource Include="Resources\SEGOEPR.TTF" />
+    <Resource Include="Resources\SEGOEPRB.TTF" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dk.png" />
+    <Resource Include="Resources\gb.png" />
+    <Resource Include="Resources\no.png" />
+    <Resource Include="Resources\ru.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Actor_Female_Dark.png" />
+    <Resource Include="Resources\Actor_Female_Light.png" />
+    <Resource Include="Resources\Actor_Male_Dark.png" />
+    <Resource Include="Resources\Actor_Male_Light.png" />
+    <Resource Include="Resources\African_Female.png" />
+    <Resource Include="Resources\African_Male.png" />
+    <Resource Include="Resources\airhostess_128.png" />
+    <Resource Include="Resources\alieness_128.png" />
+    <Resource Include="Resources\alien_128.png" />
+    <Resource Include="Resources\angel_128.png" />
+    <Resource Include="Resources\aphrodite_128.png" />
+    <Resource Include="Resources\ArmyNurse_Female_Dark.png" />
+    <Resource Include="Resources\ArmyNurse_Female_Light.png" />
+    <Resource Include="Resources\ArmyNurse_Male_Dark.png" />
+    <Resource Include="Resources\ArmyNurse_Male_Light.png" />
+    <Resource Include="Resources\astronaut_128.png" />
+    <Resource Include="Resources\Barbarian_Female.png" />
+    <Resource Include="Resources\Barbarian_Male.png" />
+    <Resource Include="Resources\Bartender_Female_Dark.png" />
+    <Resource Include="Resources\Bartender_Female_Light.png" />
+    <Resource Include="Resources\Bartender_Male_Dark.png" />
+    <Resource Include="Resources\Bartender_Male_Light.png" />
+    <Resource Include="Resources\Bishop.png" />
+    <Resource Include="Resources\Boxer_Female_Dark.png" />
+    <Resource Include="Resources\Boxer_Female_Light.png" />
+    <Resource Include="Resources\Boxer_Male_Dark.png" />
+    <Resource Include="Resources\Boxer_Male_Light.png" />
+    <Resource Include="Resources\canary_128.png" />
+    <Resource Include="Resources\captainess_128.png" />
+    <Resource Include="Resources\CatholicMonk.png" />
+    <Resource Include="Resources\CatholicNun.png" />
+    <Resource Include="Resources\catwoman_128.png" />
+    <Resource Include="Resources\Child_Female_Dark.png" />
+    <Resource Include="Resources\Child_Female_Light.png" />
+    <Resource Include="Resources\Child_Male_Dark.png" />
+    <Resource Include="Resources\Child_Male_Light.png" />
+    <Resource Include="Resources\Client_Female_Dark.png" />
+    <Resource Include="Resources\Client_Female_Light.png" />
+    <Resource Include="Resources\Client_Male_Dark.png" />
+    <Resource Include="Resources\Client_Male_Light.png" />
+    <Resource Include="Resources\contractor_128.png" />
+    <Resource Include="Resources\Cowboy.png" />
+    <Resource Include="Resources\Cowgirl.png" />
+    <Resource Include="Resources\Customer_Female_Dark.png" />
+    <Resource Include="Resources\Customer_Female_Light.png" />
+    <Resource Include="Resources\Customer_Male_Dark.png" />
+    <Resource Include="Resources\Customer_Male_Light.png" />
+    <Resource Include="Resources\dandy_128.png" />
+    <Resource Include="Resources\devil_128.png" />
+    <Resource Include="Resources\doctor_128.png" />
+    <Resource Include="Resources\fairy_128.png" />
+    <Resource Include="Resources\female_dummy_128.png" />
+    <Resource Include="Resources\FilmMaker_Female_Dark.png" />
+    <Resource Include="Resources\FilmMaker_Female_Light.png" />
+    <Resource Include="Resources\FilmMaker_Male_Dark.png" />
+    <Resource Include="Resources\FilmMaker_Male_Light.png" />
+    <Resource Include="Resources\Firefighter_Female_Dark.png" />
+    <Resource Include="Resources\Firefighter_Female_Light.png" />
+    <Resource Include="Resources\Firefighter_Male_Dark.png" />
+    <Resource Include="Resources\Firefighter_Male_Light.png" />
+    <Resource Include="Resources\FootballPlayer_Female_Dark.png" />
+    <Resource Include="Resources\FootballPlayer_Female_Light.png" />
+    <Resource Include="Resources\FootballPlayer_Male_Dark.png" />
+    <Resource Include="Resources\FootballPlayer_Male_Light.png" />
+    <Resource Include="Resources\gangster_128.png" />
+    <Resource Include="Resources\Group_Meeting_Dark.png" />
+    <Resource Include="Resources\Group_Meeting_Light.png" />
+    <Resource Include="Resources\Group_MilitaryPersonnel_Dark.png" />
+    <Resource Include="Resources\Group_MilitaryPersonnel_Light.png" />
+    <Resource Include="Resources\Group_Rescuers_Dark.png" />
+    <Resource Include="Resources\Group_Rescuers_Light.png" />
+    <Resource Include="Resources\Guitarist_Female_Dark.png" />
+    <Resource Include="Resources\Guitarist_Female_Light.png" />
+    <Resource Include="Resources\Guitarist_Male_Dark.png" />
+    <Resource Include="Resources\Guitarist_Male_Light.png" />
+    <Resource Include="Resources\Immunologist_Female_Dark.png" />
+    <Resource Include="Resources\Immunologist_Female_Light.png" />
+    <Resource Include="Resources\Immunologist_Male_Dark.png" />
+    <Resource Include="Resources\Immunologist_Male_Light.png" />
+    <Resource Include="Resources\Jew_Female.png" />
+    <Resource Include="Resources\Jew_Male.png" />
+    <Resource Include="Resources\king_128.png" />
+    <Resource Include="Resources\maid_128.png" />
+    <Resource Include="Resources\male_dummy_128.png" />
+    <Resource Include="Resources\Musician_Female_Dark.png" />
+    <Resource Include="Resources\Musician_Female_Light.png" />
+    <Resource Include="Resources\Musician_Male_Dark.png" />
+    <Resource Include="Resources\Musician_Male_Light.png" />
+    <Resource Include="Resources\Muslim_Female.png" />
+    <Resource Include="Resources\Muslim_Male.png" />
+    <Resource Include="Resources\nick_128.png" />
+    <Resource Include="Resources\ninja_128.png" />
+    <Resource Include="Resources\nun_128.png" />
+    <Resource Include="Resources\nurse_128.png" />
+    <Resource Include="Resources\Nurse_Female_Dark.png" />
+    <Resource Include="Resources\Nurse_Female_Light.png" />
+    <Resource Include="Resources\Nurse_Male_Dark.png" />
+    <Resource Include="Resources\Nurse_Male_Light.png" />
+    <Resource Include="Resources\officer_128.png" />
+    <Resource Include="Resources\Person_CoffeeBreak_Female_Dark.png" />
+    <Resource Include="Resources\Person_CoffeeBreak_Female_Light.png" />
+    <Resource Include="Resources\Person_CoffeeBreak_Male_Dark.png" />
+    <Resource Include="Resources\Person_CoffeeBreak_Male_Light.png" />
+    <Resource Include="Resources\Person_Undefined_Female_Dark.png" />
+    <Resource Include="Resources\Person_Undefined_Female_Light.png" />
+    <Resource Include="Resources\Person_Undefined_Male_Dark.png" />
+    <Resource Include="Resources\Person_Undefined_Male_Light.png" />
+    <Resource Include="Resources\Pharmacist_Female_Dark.png" />
+    <Resource Include="Resources\Pharmacist_Female_Light.png" />
+    <Resource Include="Resources\Pharmacist_Male_Dark.png" />
+    <Resource Include="Resources\Pharmacist_Male_Light.png" />
+    <Resource Include="Resources\PilotMilitary_Female_Dark.png" />
+    <Resource Include="Resources\PilotMilitary_Female_Light.png" />
+    <Resource Include="Resources\PilotMilitary_Male_Dark.png" />
+    <Resource Include="Resources\PilotMilitary_Male_Light.png" />
+    <Resource Include="Resources\PilotOldFashioned_Female_Dark.png" />
+    <Resource Include="Resources\PilotOldFashioned_Female_Light.png" />
+    <Resource Include="Resources\PilotOldFashioned_Male_Dark.png" />
+    <Resource Include="Resources\PilotOldFashioned_Male_Light.png" />
+    <Resource Include="Resources\Pilot_Female_Dark.png" />
+    <Resource Include="Resources\Pilot_Female_Light.png" />
+    <Resource Include="Resources\Pilot_Male_Dark.png" />
+    <Resource Include="Resources\Pilot_Male_Light.png" />
+    <Resource Include="Resources\PizzaDeliveryman_Female_Dark.png" />
+    <Resource Include="Resources\PizzaDeliveryman_Female_Light.png" />
+    <Resource Include="Resources\PizzaDeliveryman_Male_Dark.png" />
+    <Resource Include="Resources\PizzaDeliveryman_Male_Light.png" />
+    <Resource Include="Resources\Pope.png" />
+    <Resource Include="Resources\priest_128.png" />
+    <Resource Include="Resources\queen_128.png" />
+    <Resource Include="Resources\robotess_128.png" />
+    <Resource Include="Resources\robot_128.png" />
+    <Resource Include="Resources\SantaClaus_Female.png" />
+    <Resource Include="Resources\SantaClaus_Male.png" />
+    <Resource Include="Resources\sportsman_128.png" />
+    <Resource Include="Resources\Swimmer_Female_Dark.png" />
+    <Resource Include="Resources\Swimmer_Female_Light.png" />
+    <Resource Include="Resources\Swimmer_Male_Dark.png" />
+    <Resource Include="Resources\Swimmer_Male_Light.png" />
+    <Resource Include="Resources\teacher_128.png" />
+    <Resource Include="Resources\TechnicalSupportRepresentative_Female_Dark.png" />
+    <Resource Include="Resources\TechnicalSupportRepresentative_Female_Light.png" />
+    <Resource Include="Resources\TechnicalSupportRepresentative_Male_Dark.png" />
+    <Resource Include="Resources\TechnicalSupportRepresentative_Male_Light.png" />
+    <Resource Include="Resources\Viking_Female.png" />
+    <Resource Include="Resources\Viking_Male.png" />
+    <Resource Include="Resources\Waiter_Male_Dark.png" />
+    <Resource Include="Resources\Waiter_Male_Light.png" />
+    <Resource Include="Resources\Waitress_Female_Dark.png" />
+    <Resource Include="Resources\Waitress_Female_Light.png" />
+    <Resource Include="Resources\Wedding_Bridegroom_Dark.png" />
+    <Resource Include="Resources\Wedding_Bridegroom_Light.png" />
+    <Resource Include="Resources\Wedding_Bridesmaid_Dark.png" />
+    <Resource Include="Resources\Wedding_Bridesmaid_Light.png" />
+    <Resource Include="Resources\Wedding_Bride_Dark.png" />
+    <Resource Include="Resources\Wedding_Bride_Light.png" />
+    <Resource Include="Resources\Wedding_Groomsman_Dark.png" />
+    <Resource Include="Resources\Wedding_Groomsman_Light.png" />
+    <Resource Include="Resources\Wrestler_Female_Dark.png" />
+    <Resource Include="Resources\Wrestler_Female_Light.png" />
+    <Resource Include="Resources\Wrestler_Male_Dark.png" />
+    <Resource Include="Resources\Wrestler_Male_Light.png" />
+    <Resource Include="Resources\Writer_Female_Dark.png" />
+    <Resource Include="Resources\Writer_Female_Light.png" />
+    <Resource Include="Resources\Writer_Male_Dark.png" />
+    <Resource Include="Resources\Writer_Male_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ae.png" />
+    <Resource Include="Resources\al.png" />
+    <Resource Include="Resources\am.png" />
+    <Resource Include="Resources\ee.png" />
+    <Resource Include="Resources\fi.png" />
+    <Resource Include="Resources\fr.png" />
+    <Resource Include="Resources\ge.png" />
+    <Resource Include="Resources\it.png" />
+    <Resource Include="Resources\lt.png" />
+    <Resource Include="Resources\lv.png" />
+    <Resource Include="Resources\mx.png" />
+    <Resource Include="Resources\pl.png" />
+    <Resource Include="Resources\pt.png" />
+    <Resource Include="Resources\th.png" />
+    <Resource Include="Resources\tn.png" />
+    <Resource Include="Resources\tz.png" />
+    <Resource Include="Resources\vn.png" />
+    <Resource Include="Resources\za.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Arrow_down.png" />
+    <Resource Include="Resources\Arrow_left.png" />
+    <Resource Include="Resources\Arrow_right.png" />
+    <Resource Include="Resources\Arrow_up.png" />
+    <Resource Include="Resources\Badge-plus.png" />
+    <Resource Include="Resources\Colours_CMYK.png" />
+    <Resource Include="Resources\Colours_RGB.png" />
+    <Resource Include="Resources\heart.png" />
+    <Resource Include="Resources\home.png" />
+    <Resource Include="Resources\Map.png" />
+    <Resource Include="Resources\Orb_info.png" />
+    <Resource Include="Resources\Orb_minus.png" />
+    <Resource Include="Resources\Orb_plus.png" />
+    <Resource Include="Resources\Shield.png" />
+    <Resource Include="Resources\star.png" />
+    <Resource Include="Resources\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Identification_card.png" />
+    <Resource Include="Resources\Keychain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\go-to.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GO_TO_JAIL.png" />
+    <Resource Include="Resources\june-16-in-jail-monopoly %282%29.png" />
+    <Resource Include="Resources\june-16-in-jail-monopoly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\free-parking.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1px.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\wereldkaart-vintage_a-G-5049249-0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MAPPP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\od.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WWFlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\olympicflag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\incometax.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\greenpeacelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NASA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\luxurytax.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OPEC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\monopolylogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\igralnaya-kost-animatsionnaya-kartinka-0084.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1.gif" />
+    <Resource Include="Resources\2.gif" />
+    <Resource Include="Resources\3.gif" />
+    <Resource Include="Resources\4.gif" />
+    <Resource Include="Resources\5.gif" />
+    <Resource Include="Resources\6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Roscosmos.png" />
+    <Resource Include="Resources\who.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\home0.png" />
+    <Resource Include="Resources\home1.png" />
+    <Resource Include="Resources\home2.png" />
+    <Resource Include="Resources\home3.png" />
+    <Resource Include="Resources\home4.png" />
+    <Resource Include="Resources\home5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="monopoly.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
