@@ -1,49 +1,121 @@
-﻿<Window x:Class="WpfApplication1.Window1"
+<Window x:Class="WpfApplication1.Window1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Deal" Height="576" Width="576">
+        Title="Deal" Height="636" Width="576" FontFamily="Segoe Print">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="288"/>
+            <RowDefinition Height="318"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="350"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button Click="ButtonOK" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,291,99,0" Width="130" Height="30" >OK</Button>
-        <Button Click="ButtonCancel" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,343,99,0" Width="130" Height="30" Grid.Column="1" >Cancel</Button>
-        <TextBlock Grid.Column="1" HorizontalAlignment='Left' Margin="15,20,0,5" Width="71">Select player</TextBlock>
-        <ComboBox DisplayMemberPath="Name" Name="routeComboBox" Grid.Column="1" Margin="0,15,15,5" HorizontalAlignment="Right" Width="240"></ComboBox>
-        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment='Left' Margin="15,20,0,5" Width="71">Select street</TextBlock>
-        <ComboBox DisplayMemberPath="Name" Name="stationComboBox" Grid.Row="1" Grid.Column="1" Margin="0,15,15,5" HorizontalAlignment="Right" Width="240"></ComboBox>
-        <Button Click="ButtonAdd" Grid.Row="1" Grid.Column="2" Margin="5,15,15,5" HorizontalAlignment="Center" Width="89">Add</Button>
-        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="142,10,135,10" Width="73">List of streets</TextBlock>
-        <DataGrid ItemsSource="{Binding}" Name="ListOfFavourites" Grid.Row="3" Grid.Column="1" Margin="5,10,5,247" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="3*" Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="7*" Header="Owner (player number)" Binding="{Binding Description}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment='Left' Margin="5,214,0,190" Width="71">Offer money:</TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment='Left' Margin="5,240,0,164" Width="81" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="-0.637"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-0.322"/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>Ask for money:</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Height="21" VerticalAlignment="Top" Margin="95,214,10,0"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Height="21" VerticalAlignment="Top" Margin="95,240,10,0"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="288"/>
+                <ColumnDefinition Width="288"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="144"/>
+                    <RowDefinition Height="144"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64"/>
+                        <ColumnDefinition Width="219"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Name="cComp" Grid.Column="0" Grid.Row="0" Fill="Yellow" HorizontalAlignment="Center" Height="64"   Stroke="Black" VerticalAlignment="Top" Width="64"/>
+                    <Image x:Name="portrait" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Height="64"   VerticalAlignment="Top" Width="64" Source="Resources/1px.gif" />
+                    <ListBox x:Name="listBox" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Height="64"  VerticalAlignment="Top" Width="226"/>
+                </Grid>
+                <DataGrid RowHeight="16"  IsEnabled="False" AutoGenerateColumns="False" x:Name="AllPlayers"  Grid.Column="0" HorizontalAlignment="Center" Height="144" VerticalAlignment="Top" Width="288"  Grid.Row="2" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="3*" Header="Card" Binding="{Binding num}"/>
+                        <DataGridTemplateColumn Width="0.8*" Header="Cost"/>
+                        <DataGridTemplateColumn Width="0.8*" Header="Buildings">
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Height="32" Width="32" Source="{Binding face.Source}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="144"/>
+                    <RowDefinition Height="144"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="142"/>
+                        <ColumnDefinition Width="141"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="w3rsdr" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Height="64"  VerticalAlignment="Top" Width="142"/>
+                    <ListBox x:Name="sfsfsf" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Height="64"  VerticalAlignment="Top" Width="141"/>
+                </Grid>
+                <DataGrid RowHeight="16"  IsEnabled="False" AutoGenerateColumns="False" x:Name="tsrs"  Grid.Column="0" HorizontalAlignment="Center" Height="144" VerticalAlignment="Top" Width="288"  Grid.Row="1" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="3*" Header="Card" Binding="{Binding num}"/>
+                        <DataGridTemplateColumn Width="0.8*" Header="Cost"/>
+                        <DataGridTemplateColumn Width="0.8*" Header="Buildings">
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Height="32" Width="32" Source="{Binding face.Source}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="134"/>
+                <RowDefinition Height="67"/>
+                <RowDefinition Height="67"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <DataGrid RowHeight="16"  IsEnabled="False" AutoGenerateColumns="False" x:Name="erer"  Grid.Column="0" HorizontalAlignment="Center" Height="144" VerticalAlignment="Top" Width="576"  Grid.Row="0" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="3*" Header="Card" Binding="{Binding num}"/>
+                    <DataGridTemplateColumn Width="0.8*" Header="Cost"/>
+                    <DataGridTemplateColumn Width="0.8*" Header="Buildings">
+
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Height="32" Width="32" Source="{Binding face.Source}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="142"/>
+                    <ColumnDefinition Width="432"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="Budget" Content="Offer Money" Grid.Column="0" Grid.Row="1" Height="67" Width="142" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False" FontSize="14"  Margin="0,0,0,0" />
+                <TextBox Name="NicknameBox" Grid.Column="1" Grid.Row="0" FontSize="20" Width="432">Nickname</TextBox>
+                
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="142"/>
+                    <ColumnDefinition Width="432"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="fgsfs" Content="Ask for Money" Grid.Column="0" Grid.Row="0" Height="67" Width="142" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False" FontSize="14"  Margin="0,0,0,0" />
+                <TextBox Name="NicknsfsfrfgdgameBox" Grid.Column="1" Grid.Row="0" FontSize="20" Width="432">Nickname</TextBox>
+            </Grid>
+            <Button Name="bStart" IsEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" Width="220" Height="40" FontSize="19"  >Обмен
+            </Button>
+        </Grid>
     </Grid>
+
 </Window>
