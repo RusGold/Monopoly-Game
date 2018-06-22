@@ -19,11 +19,11 @@ namespace WpfApplication1.Data
         public Cell[] cells = new Cell[40];
         public MainWindow wnd;
         public Player cPlayer;
-        public CardStack FreePark = new CardStack("park.txt");
-        public CardStack od = new CardStack("vault.txt");
-        public CardStack rd = new CardStack("chance.txt");
-        public CardStack lt = new CardStack("lux_tax.txt");
-        public CardStack it = new CardStack("inc_tax.txt");
+        public CardStack FreePark = new CardStack("..\\..\\..\\park.txt");
+        public CardStack od = new CardStack("..\\..\\..\\vault.txt");
+        public CardStack rd = new CardStack("..\\..\\..\\chance.txt");
+        public CardStack lt = new CardStack("..\\..\\..\\lux_tax.txt");
+        public CardStack it = new CardStack("..\\..\\..\\inc_tax.txt");
         //public CardStack Luxury
 
         public CommonData(MainWindow Wnd)
@@ -31,7 +31,7 @@ namespace WpfApplication1.Data
             wnd = Wnd;
             for (int i = 0; i < 40; i++) { cells[i] = new Cell(); }
             var line = "";
-            var path = "countries.txt";
+            var path = "..\\..\\..\\countries.txt";
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             while ((line = file.ReadLine()) != null)
             {
