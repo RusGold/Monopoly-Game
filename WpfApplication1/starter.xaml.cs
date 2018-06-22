@@ -27,7 +27,7 @@ namespace WpfApplication1
         //private static CommonData cdata = MainWindow.cdata;
         List<Image> Images = new List<Image>();
         public ObservableCollection<lPlayer> pAll { get; set; }
-        List<string> NameOfColours = new List<string>() { "Yellow", "Green", "Red", "Black", "Blue", "Purple", "Orange", "White", "Pink", "Coral", "Dark blue", "Dark green" };
+        List<string> NameOfColours = new List<string>() { "Yellow", "Green", "Red", "Black", "Blue", "Purple", "Orange", "Gray", "Pink", "Coral", "Dark blue", "Dark green" };
 
         //
 
@@ -55,8 +55,8 @@ namespace WpfApplication1
                 return (Color)ColorConverter.ConvertFromString("#800080");
             if (s == "Orange")
                 return (Color)ColorConverter.ConvertFromString("#ffa500");
-            if (s == "White")
-                return (Color)ColorConverter.ConvertFromString("#ffffff");
+            if (s == "Gray")
+                return (Color)ColorConverter.ConvertFromString("#808080");
             if (s == "Pink")
                 return (Color)ColorConverter.ConvertFromString("#ffc0cb");
             if (s == "Coral")
@@ -140,7 +140,8 @@ namespace WpfApplication1
 
         private void add_click(object sender, RoutedEventArgs e)
         {
-            if (ColoursBox.SelectedItem != null)
+            var selectionisvalid = (ColoursBox.SelectedItem != null)&&(NicknameBox.Text!="");
+            if (selectionisvalid)
             {
                 pAll.Add(new lPlayer { num = pAll.Count + 1, name = NicknameBox.Text, color = ColoursBox.Text, face = Images[NumberOfImage] });
                 var i = NameOfColours.FindIndex(x => x == ColoursBox.Text);
@@ -149,10 +150,11 @@ namespace WpfApplication1
                 ColoursBox.SelectedItem = null;
                 if (pAll.Count > 1) bStart.ToolTip = null;
                 if (pAll.Count > 3) Add.IsEnabled = false;
+                NicknameBox.Text = "";
             }
             else
             {
-                MessageBox.Show("Нельзя играть бесцветной фишкой :)");
+                MessageBox.Show((ColoursBox.SelectedItem == null?"Нельзя играть бесцветной фишкой :)":"Безымянные игроки в игру не допускаются :)"));
             }
         }
     }

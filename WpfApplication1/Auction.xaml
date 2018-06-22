@@ -19,7 +19,7 @@
             <ColumnDefinition Width="105*"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,391,99,0" Width="130" Height="30" Click="Button_Click" >Поднять ставку</Button>
-        <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,445,99,0" Width="130" Height="30" Grid.Column="1">Отказаться</Button>
+        <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,445,99,0" Width="130" Height="30" Grid.Column="1" Click="Cancel">Отказаться</Button>
         <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="95,10,163,10" Width="96" FontSize="20" Height="27">Аукцион</TextBlock>
         <ListBox Name="Log" Grid.Row="3" Grid.Column="1" Margin="5,10,5,284" IsEnabled="False">
 
@@ -28,7 +28,7 @@
         <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment='Left' Margin="5,355,0,113" Width="85">Поднять на:</TextBlock>
         <TextBox Name="NextBid" Grid.Row="3" Grid.Column="1" Height="21" VerticalAlignment="Top" Margin="95,355,10,0"/>
         <Rectangle Name="cComp" Grid.Column="1" Fill="Yellow" HorizontalAlignment="Left" Height="100" Margin="108,218,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="155"/>
-        <Image x:Name="portrait" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="150,234,0,0" Grid.Row="3" VerticalAlignment="Top" Width="64" Source="resources/faces/alien_128.png"/>
+        <Image x:Name="portrait" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="150,234,0,0" Grid.Row="3" VerticalAlignment="Top" Width="64" Source="Resources/1px.gif"/>
         <Rectangle Visibility="Hidden" Name="comp1" Grid.Column="1" Fill="Yellow" HorizontalAlignment="Left" Height="23" Margin="208,14,0,0" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="23"/>
         <Rectangle Visibility="Hidden" Name="comp2" Grid.Column="1" Fill="Green" HorizontalAlignment="Left" Height="23" Margin="245,14,0,0" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="23"/>
         <Rectangle Visibility="Hidden" Name="comp3" Grid.Column="1" Fill="Coral" HorizontalAlignment="Left" Height="23" Margin="285,14,0,0" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="23"/>

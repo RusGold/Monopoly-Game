@@ -52,7 +52,7 @@ Title="Monopoly Game" Height="700" Width="1024" FontFamily="/WpfApplication1;com
                 <DataGridTemplateColumn Width="36" Header="Face">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Height="32" Width="32" Source="{Binding face}"/>
+                            <Image Height="32" Width="32" Source="{Binding face.Source}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
